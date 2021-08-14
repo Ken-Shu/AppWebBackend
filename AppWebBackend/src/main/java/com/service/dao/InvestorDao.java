@@ -15,9 +15,9 @@ public class InvestorDao {
 	
 	public List<Investor> queryAllInvestor(){
 		List<Investor> investors = new ArrayList<>();
-		String sqlString ="select id , username, email,tdate from investor";
+		String sql ="select id , username, email,tdate from investor";
 		try (Statement statement = conn.createStatement();
-				ResultSet rs = statement.executeQuery("")){
+				ResultSet rs = statement.executeQuery(sql)){
 			while(rs.next()) {
 				Integer id = rs.getInt("id");
 				String username = rs.getString("username");

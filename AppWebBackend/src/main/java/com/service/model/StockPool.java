@@ -9,6 +9,10 @@ public class StockPool {
 	private String symbolname;
 	private Integer warning;
 	private Date tDate;
+	
+	//關聯資料 one to one
+	private StockPool stockpool;
+	
 	public StockPool(Integer id, Integer typeid, String symbol, String symbolname, Integer warning, Date tDate) {
 		super();
 		this.id = id;

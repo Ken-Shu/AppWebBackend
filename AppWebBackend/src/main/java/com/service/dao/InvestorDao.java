@@ -27,8 +27,27 @@ public class InvestorDao {
 				investors.add(investor);
 			}
 		} catch (Exception e) {
-			
+			e.printStackTrace(System.out);
 		}
 		return investors;
+	}
+	
+	public Investor getInvestorById(Integer investorId){
+		Investor investor = null;
+		String sql ="select id , username, email,tdate from investor where id="+investorId;
+		try (Statement statement = conn.createStatement();
+				ResultSet rs = statement.executeQuery(sql)){
+			if(rs.next()) {
+				Integer id = rs.getInt("id");
+				String username = rs.getString("username");
+				String email = rs.getString("email");
+				Date tdate = rs.getDate("tdate");
+				investor = new Investor(id,username,email,tdate);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
+		return investor;
 	}
 }
